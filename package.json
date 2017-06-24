@@ -1,0 +1,24 @@
+{
+  "name": "hammocky-api",
+  "version": "1.0.0",
+  "description": "API for Hammocky",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.29"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arctair/hammocky-api.git"
+  },
+  "author": "arctair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arctair/hammocky-api/issues"
+  },
+  "homepage": "https://github.com/arctair/hammocky-api#readme"
+}
