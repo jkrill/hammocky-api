@@ -1,0 +1,5 @@
+{
+  "mongo_connection_uri": "mongodb://localhost:27107/hammocky",
+  "http_server_port": 8081,
+  "img_path": "/var/www/hammocky.com/img"
+} 

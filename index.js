@@ -2,13 +2,14 @@ var MongoClient = require('mongodb').MongoClient;
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var path = require('path');
 
-var connection_url = "mongodb://localhost:27017/hammocky";
+var config = require('./config.json');
 
-MongoClient.connect(connection_url, db_connected);
+MongoClient.connect(config.mongo_connection_uri, db_connected);
 
-var server = app.listen(8081, function() {
-  console.log("Server started (*:8081)");
+var server = app.listen(config.http_server_port, function() {
+  console.log("Server started (*:" + config.http_server_port + ")");
 });
 
 function db_connected(err, db) {
@@ -18,14 +19,14 @@ function db_connected(err, db) {
     });
   }); 
   app.get('/img/:id', function(req, res) {
-    var path = "/var/www/hammocky.com/img/" + req.params.id;
-    if (fs.existsSync(path)) {
-      res.sendFile('/var/www/hammocky.com/img/' + req.params.id);
+    var img_path = path.join(config.img_path, req.params.id);
+    if (fs.existsSync(img_path)) {
+      res.sendFile(img_path);
     }
     else {
       res
         .status(404)
-        .send('Not found');
+        .send('Not found: ' + req.params.id);
     }
   });
 }
